@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace必须指向Dao接口 -->
+<mapper
+	namespace="com.techstar.modules.activiti.repository.mybatis.ActivitiModelMybatisDao">
+
+	<!-- MODEL RESULTMAP -->
+	<resultMap id="modelResultMap"
+		type="org.activiti.engine.impl.persistence.entity.ModelEntity">
+		<id property="id" column="ID_" jdbcType="VARCHAR" />
+		<result property="revision" column="REV_" jdbcType="INTEGER" />
+		<result property="name" column="NAME_" jdbcType="VARCHAR" />
+		<result property="key" column="KEY_" jdbcType="VARCHAR" />
+		<result property="category" column="CATEGORY_" jdbcType="VARCHAR" />
+		<result property="createTime" column="CREATE_TIME_" jdbcType="TIMESTAMP" />
+		<result property="lastUpdateTime" column="LAST_UPDATE_TIME_"
+			jdbcType="TIMESTAMP" />
+		<result property="version" column="VERSION_" jdbcType="INTEGER" />
+		<result property="metaInfo" column="META_INFO_" jdbcType="VARCHAR" />
+		<result property="deploymentId" column="DEPLOYMENT_ID_"
+			jdbcType="VARCHAR" />
+		<result property="editorSourceValueId" column="EDITOR_SOURCE_VALUE_ID_"
+			jdbcType="VARCHAR" />
+		<result property="editorSourceExtraValueId" column="EDITOR_SOURCE_EXTRA_VALUE_ID_"
+			jdbcType="VARCHAR" />
+	</resultMap>
+
+
+	<select id="findPageBy" resultMap="modelResultMap">
+		select ID_,
+		REV_,
+		NAME_,
+		KEY_,
+		CATEGORY_,
+		CREATE_TIME_,
+		LAST_UPDATE_TIME_,
+		VERSION_,
+		META_INFO_,
+		DEPLOYMENT_ID_,
+		EDITOR_SOURCE_VALUE_ID_,
+		EDITOR_SOURCE_EXTRA_VALUE_ID_ 
+		from ACT_RE_MODEL
+	</select>
+
+
+</mapper> 

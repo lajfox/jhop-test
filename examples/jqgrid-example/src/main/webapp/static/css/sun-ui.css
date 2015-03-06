@@ -1,0 +1,158 @@
+html, body {
+	margin: 0;			/* Remove body margin/padding */
+	padding: 0;
+	overflow: hidden;	/* Remove scroll bars on browser window */	
+    font-size: 75%;
+    font-family:'微软雅黑';
+}
+
+ div,   ul, li
+{ padding:0; margin:0;  }
+
+.add-margin{margin: 14px !important;}
+.no-margin{margin: 10 !important;}
+.add-padding	{ padding:	14px !important; }
+.no-padding		{ padding:		0 !important; }
+.add-scrollbar	{ overflow:		auto; }
+.no-scrollbar	{ overflow:		hidden; }
+.allow-overflow	{ overflow:		visible; }
+.full-width	{ width:		100%; }
+.full-height	{ height:		100%; }
+button			{ cursor:		pointer; }
+
+
+#tabs .ui-tabs { position: relative; padding: 0; zoom: 1; } 
+#tabs .ui-tabs-panel { display: block; border-width: 0; padding: 0; background: none; }
+#tabs .ui-tabs-nav li {position: relative;}
+#tabs li .ui-icon-close {display: none;position: relative;bottom: 3px;cursor: pointer;}
+#tabs .ui-tabs-active .ui-icon-close {display: block;}
+#tabs li .ui-icon-close { float: left; margin: 0.4em 0.2em 0 0; cursor: pointer; }
+
+.ui-tabs-paging-next { 
+	float: right !important;
+}
+.ui-tabs-paging-prev,
+.ui-tabs-paging-next {
+	background: transparent !important;
+	border: 0 !important;
+	margin-bottom: 1px !important;
+	font-weight: bold;
+}
+.ui-tabs-paging-prev a,
+.ui-tabs-paging-next a {
+    display: block; 
+    position: relative; 
+    top: 1px; 
+    border: 0;
+    z-index: 2; 
+    padding: 0;
+    /* color: #444; */ 
+    text-decoration: none;
+	background: transparent !important; 
+	cursor: pointer;
+}
+.ui-tabs-paging-next a:hover,
+.ui-tabs-paging-next a:focus,
+.ui-tabs-paging-next a:active,
+.ui-tabs-paging-prev a:hover,
+.ui-tabs-paging-prev a:focus,
+.ui-tabs-paging-prev a:active { 
+	background: transparent; 
+}
+.ui-tabs-paging-disabled {
+	visibility: hidden;
+}
+
+
+.ui-layout-west .ui-jqgrid tr.jqgrow td { border-bottom: 0px none;}
+.ui-datepicker {z-index:1200;}
+.rotate
+{
+    /* for Safari */
+    -webkit-transform: rotate(-90deg);
+    /* for Firefox */
+    -moz-transform: rotate(-90deg);
+    /* for Internet Explorer */
+    filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
+}		
+
+.ui-layout-toggler-east-closed, 
+.ui-layout-toggler-west-open	{ background: transparent url(img/toggle-lt.gif) no-repeat right center; }
+.ui-layout-toggler-west-closed, 
+.ui-layout-toggler-east-open	{ background: transparent url(img/toggle-rt.gif) no-repeat left center; }
+.ui-layout-toggler-south-closed, 
+.ui-layout-toggler-north-open	{ background: transparent url(img/toggle-up.gif) no-repeat center bottom; }
+.ui-layout-toggler-north-closed, 
+.ui-layout-toggler-south-open	{ background: transparent url(img/toggle-dn.gif) no-repeat center top; }
+
+.ui-layout-pane-center { /* IFRAME pane */ 
+	padding: 0;
+	margin:  0;
+} 
+ 
+
+.ui-layout-resizer { /* all 'resizer-bars' */ 
+background: #DDD; 
+} 
+.ui-layout-resizer-open:hover { /* mouse-over */
+	background: #9D9; 
+}
+ 
+.ui-layout-toggler .content { /* toggler-text */ 
+	font: 14px bold;
+}
+.ui-layout-toggler:hover { /* mouse-over */ 
+background: #DCA; 
+} 
+.ui-layout-toggler:hover .content { /* mouse-over */ 
+color: #009; 
+}
+
+
+
+#header, #header .headerNav {   no-repeat;height: 80px; }
+#header .logo { background:url(img/logo.png) no-repeat;}
+#header .nav li { float:left; margin-left:-1px; padding:0 8px; line-height:11px; background:url(img/listLine.png) no-repeat;}
+#header .themeList li div { background:url(img/themeButton.png) no-repeat;}
+/* Menu */
+#navMenu, #navMenu li, #navMenu li.selected a, #navMenu li.selected span { background:url(img/menu.png) no-repeat;}
+ul, ol { list-style:none;}
+img { border:none;}
+#header .nav  a {  text-decoration:none;}
+#header .nav  a:hover {text-decoration:underline;}
+#header .headerNav { height:80px; background-repeat:no-repeat; background-position:100% -50px;}
+#header .logo { float:left;margin-left:30px;  position:relative;width:100px; height:80px; text-indent:-1000px;}
+#header .nav { display:block; height:21px; position:absolute; top:8px; right:0; z-index:31;}
+#header .nav li { float:left; margin-left:1px; padding:0 10px; line-height:11px; position:relative;}
+#header .nav li a { line-height:11px;}
+#header .nav ul { display:none; width:230px; border:solid 1px #06223e; overflow:hidden; background:#FFF; position:absolute; top:20px; right:0;}
+#header .nav ul li { margin-top:10px; height:21px;}
+#header .nav ul li a { color:#000;}
+#header .nav .selected ul {display:block;}
+#header .themeList { position:absolute; top:60px; right:10px;}
+#header .themeList li { float:left; padding:0 3px;}
+#header .themeList li div { display:block; overflow:hidden; width:13px; height:11px; text-indent:-100px; cursor:pointer;}
+#header .themeList li.default div { background-position:0 0;}
+#header .themeList li.default .selected { background-position:0 -20px;}
+#header .themeList li.green div { background-position:-20px 0;}
+#header .themeList li.green .selected { background-position:-20px -20px;}
+#header .themeList li.red div { background-position:-40px 0;}
+#header .themeList li.red .selected { background-position:-40px -20px;}
+#header .themeList li.purple div { background-position:-60px 0;}
+#header .themeList li.purple .selected { background-position:-60px -20px;}
+#header .themeList li.silver div { background-position:-80px 0;}
+#header .themeList li.silver .selected { background-position:-80px -20px;}
+#header .themeList li.azure div { background-position:-100px 0;}
+#header .themeList li.azure .selected { background-position:-100px -20px;}
+
+/* Menu */
+#navMenu { display:block; overflow:hidden; height:35px; padding:0 5px; background-repeat:repeat-x;}
+#navMenu ul { float:left; display:block; overflow:hidden; position:relative;}
+#navMenu li { float:left; margin-left:-1px; background-position:0 -50px; position:relative;}
+#navMenu li a { float:left;}
+#navMenu li span { float:left; font-weight:bold; cursor:pointer; padding:0 15px;}
+#navMenu li a, #navMenu li span { line-height:35px; font-size:14px;}
+#navMenu li.selected { z-index:1;}
+#navMenu li.selected a, #navMenu li.selected a:hover { text-decoration:none; background-position:100% -150px;}
+#navMenu li.selected span { padding:0 8px; background-position:0 -100px;}
+

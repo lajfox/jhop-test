@@ -1,0 +1,11 @@
+#Thu Mar 06 10:03:19 CST 2014
+eclipse.preferences.version=1
+encoding//src/main/resources=UTF-8
+encoding//src/main/resources/activiti.properties=UTF-8
+encoding//src/main/resources/application.properties=UTF-8
+encoding//src/main/resources/diagrams/leave-formkey/dept-leader-audit.form=UTF-8
+encoding//src/main/resources/diagrams/leave-formkey/hr-audit.form=UTF-8
+encoding//src/main/resources/diagrams/leave-formkey/modify-apply.form=UTF-8
+encoding//src/main/resources/diagrams/leave-formkey/report-back.form=UTF-8
+encoding//src/main/resources/diagrams/leave-formkey/start.form=UTF-8
+encoding/<project>=UTF-8

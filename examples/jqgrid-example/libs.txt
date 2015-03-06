@@ -1,0 +1,27 @@
+	mvn eclipse:clean eclipse:eclipse -Dwtpversion=2.0
+	
+	<classpathentry kind="var" path="M2_REPO/com/techstar/jhop3-core/2.0.1-snapshots/jhop3-core-2.0.1-snapshots.jar" sourcepath="M2_REPO/com/techstar/jhop3-core/2.0.1-snapshots/jhop3-core-2.0.1-snapshots-sources.jar">
+		<attributes>
+			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
+		</attributes>
+	</classpathentry>	
+	<classpathentry kind="var" path="M2_REPO/com/techstar/jhop3-activiti/2.0.1-snapshots/jhop3-activiti-2.0.1-snapshots.jar" sourcepath="M2_REPO/com/techstar/jhop3-activiti/2.0.1-snapshots/jhop3-activiti-2.0.1-snapshots-sources.jar">
+		<attributes>
+			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="var" path="M2_REPO/com/techstar/jhop3-jasperreports/2.0.1-snapshots/jhop3-jasperreports-2.0.1-snapshots.jar"  sourcepath="M2_REPO/com/techstar/jhop3-jasperreports/2.0.1-snapshots/jhop3-jasperreports-2.0.1-snapshots-sources.jar">
+		<attributes>
+			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="var" path="M2_REPO/com/techstar/jhop3-shiro/2.0.1-snapshots/jhop3-shiro-2.0.1-snapshots.jar" sourcepath="M2_REPO/com/techstar/jhop3-shiro/2.0.1-snapshots/jhop3-shiro-2.0.1-snapshots-sources.jar">
+		<attributes>
+			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
+		</attributes>
+	</classpathentry>	
+	<classpathentry kind="var" path="M2_REPO/com/techstar/jhop3-mail/2.0.1-snapshots/jhop3-mail-2.0.1-snapshots.jar" sourcepath="M2_REPO/com/techstar/jhop3-mail/2.0.1-snapshots/jhop3-mail-2.0.1-snapshots-sources.jar">
+		<attributes>
+			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
+		</attributes>
+	</classpathentry>		

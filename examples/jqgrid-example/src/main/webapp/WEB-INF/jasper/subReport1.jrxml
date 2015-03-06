@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="subReport1" language="groovy" pageWidth="612" pageHeight="792" whenNoDataType="AllSectionsNoDetail" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="ab2f6651-08f8-4794-b329-39d9fdc5f5cf">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<subDataset name="Dataset1" uuid="dfb6db64-9aa1-427e-88ff-26c57f1e5c18">
+		<queryString language="SQL">
+			<![CDATA[SELECT
+     ss_user.`id` AS ss_user_id,
+     ss_user.`email` AS ss_user_email,
+     ss_user.`login_name` AS ss_user_login_name,
+     ss_user.`name` AS ss_user_name,
+     ss_user.`password` AS ss_user_password,
+     ss_user.`salt` AS ss_user_salt,
+     ss_user.`status` AS ss_user_status,
+     ss_user.`team_id` AS ss_user_team_id,
+     ss_user.`createtime` AS ss_user_createtime,
+     ss_user.`logintime` AS ss_user_logintime,
+     ss_user.`unitid` AS ss_user_unitid
+FROM
+     `ss_user` ss_user]]>
+		</queryString>
+		<field name="ss_user_login_name" class="java.lang.String"/>
+		<field name="ss_user_name" class="java.lang.String"/>
+		<field name="ss_user_id" class="java.lang.String"/>
+		<field name="ss_user_email" class="java.lang.String"/>
+		<field name="ss_user_password" class="java.lang.String"/>
+		<field name="ss_user_salt" class="java.lang.String"/>
+		<field name="ss_user_status" class="java.lang.String"/>
+		<field name="ss_user_team_id" class="java.lang.String"/>
+		<field name="ss_user_createtime" class="java.sql.Date"/>
+		<field name="ss_user_logintime" class="java.lang.Double"/>
+		<field name="ss_user_unitid" class="java.lang.String"/>
+	</subDataset>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="2bcff20a-acb2-4158-b3ea-3d7e8f6736f3" x="0" y="0" width="572" height="79"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="22"/>
+				</textElement>
+				<text><![CDATA[sub Static text]]></text>
+			</staticText>
+		</band>
+	</title>
+	<summary>
+		<band height="86" splitType="Stretch">
+			<componentElement>
+				<reportElement uuid="89ab83d3-eb7d-4e1e-be49-fa0c57bfb6c4" key="table" style="table" x="0" y="0" width="572" height="86"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="Dataset1" uuid="a9ce4e86-f65c-45ac-bede-3922ea19ffdd">
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:column width="195" uuid="472c7a43-742c-4bd1-b0f5-074159cd2441">
+						<jr:columnHeader style="table_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement uuid="8647bd4b-7363-4e92-9ba6-b08adce6fe18" x="0" y="0" width="195" height="30"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<text><![CDATA[ss_user_login_name]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:columnFooter style="table_CH" height="30" rowSpan="1"/>
+						<jr:detailCell style="table_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement uuid="c706e89d-9bdf-4d10-89ac-53dc0fb5e397" x="0" y="0" width="195" height="20"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<textFieldExpression><![CDATA[$F{ss_user_login_name}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="158" uuid="bbd8ad7c-4c21-4b79-a705-100985fc2cf8">
+						<jr:columnHeader style="table_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement uuid="021c6116-88db-4e6f-8915-113da409845a" x="0" y="0" width="158" height="30"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<text><![CDATA[ss_user_name]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:columnFooter style="table_CH" height="30" rowSpan="1"/>
+						<jr:detailCell style="table_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement uuid="d6ad7fed-ce82-451e-990b-132dcab1861f" x="0" y="0" width="158" height="20"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<textFieldExpression><![CDATA[$F{ss_user_name}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="164" uuid="a196912b-7744-433a-b762-dcaca3573052">
+						<jr:columnHeader style="table_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement uuid="f9a45adb-a539-4fba-ac29-585f849f657a" x="0" y="0" width="164" height="30"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<text><![CDATA[ss_user_email]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:columnFooter style="table_CH" height="30" rowSpan="1"/>
+						<jr:detailCell style="table_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement uuid="8b4edd06-cb5c-47e6-b57f-c704d0583bf8" x="0" y="0" width="164" height="20"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<textFieldExpression><![CDATA[$F{ss_user_email}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="300" uuid="3ac05853-7672-4484-bffe-34363dcc3f7e">
+						<jr:columnHeader style="table_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement uuid="ee983a22-75b8-412e-b436-e801f7f54b76" x="0" y="0" width="300" height="30"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<text><![CDATA[ss_user_createtime]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:columnFooter style="table_CH" height="30" rowSpan="1"/>
+						<jr:detailCell style="table_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement uuid="72dce4cc-bfc8-4987-9f23-f9ce0e2e449a" x="0" y="0" width="300" height="20"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<textFieldExpression><![CDATA[$F{ss_user_createtime}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+		</band>
+	</summary>
+</jasperReport>

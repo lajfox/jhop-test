@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+
+	<bean id="jasperReportsMultiFormatView"
+		class=" com.techstar.modules.jasperreports.web.servlet.view.jasperreports.JasperReportsMultiFormatView">
+		<property name="contentType" value="text/html;charset=UTF-8" />
+		<property name="jdbcDataSource" ref="dataSource" />
+		<property name="myRequestContextAttribute" value="myRequestContextAttribute" />
+		<property name="htmlsession" value="true" />
+		<property name="showpage" value="true" />
+		<property name="debug" value="false" />
+		<property name="htmlheaderftl" value="htmlheader.ftl" />
+		<property name="formatMappings">
+			<map>
+				<entry key="csv"
+					value="org.springframework.web.servlet.view.jasperreports.JasperReportsCsvView" />
+				<entry key="html"
+					value="com.techstar.modules.jasperreports.web.servlet.view.jasperreports.JasperReportsHtmlView" />
+				<entry key="pdf"
+					value="org.springframework.web.servlet.view.jasperreports.JasperReportsPdfView" />
+				<entry key="xls"
+					value="org.springframework.web.servlet.view.jasperreports.JasperReportsXlsView" />
+				<entry key="xlsx"
+					value="com.techstar.modules.jasperreports.web.servlet.view.jasperreports.JasperReportsXlsxView" />
+				<entry key="docx"
+					value="com.techstar.modules.jasperreports.web.servlet.view.jasperreports.JasperReportsDocxView" />
+				<entry key="pptx"
+					value="com.techstar.modules.jasperreports.web.servlet.view.jasperreports.JasperReportsPptxView" />
+				<entry key="rtf"
+					value="com.techstar.modules.jasperreports.web.servlet.view.jasperreports.JasperReportsRftView" />
+				<entry key="odt"
+					value="com.techstar.modules.jasperreports.web.servlet.view.jasperreports.JasperReportsOdtView" />
+				<entry key="ods"
+					value="com.techstar.modules.jasperreports.web.servlet.view.jasperreports.JasperReportsOdsView" />
+				<entry key="swf"
+					value="com.techstar.modules.jasperreports.web.servlet.view.jasperreports.JasperReportsXml4SwfView" />
+				<entry key="xhtml"
+					value="com.techstar.modules.jasperreports.web.servlet.view.jasperreports.JasperReportsXHtmlView" />	
+				<entry key="applet"
+					value="com.techstar.modules.jasperreports.web.servlet.view.jasperreports.JasperReportsAppletView" />														
+			</map>
+		</property>
+		<property name="contentDispositionMappings">
+			<props>	
+				<prop key="csv">attachment;filename=file.csv</prop>			
+				<prop key="pdf">attachment;filename=file.pdf</prop>
+				<prop key="xls">attachment;filename=file.xls</prop>
+				<prop key="xlsx">attachment;filename=file.xlsx</prop>
+				<prop key="docx">attachment;filename=file.docx</prop>
+				<prop key="pptx">attachment;filename=file.pptx</prop>
+				<prop key="rtf">attachment;filename=file.rtf</prop>
+				<prop key="odt">attachment;filename=file.odt</prop>
+				<prop key="ods">attachment;filename=file.ods</prop>
+			</props>
+		</property>
+		<property name="useSessionMappings">
+			<props>
+				<prop key="html">false</prop>
+				<prop key="xhtml">false</prop>
+				<prop key="csv">true</prop>
+				<prop key="pdf">true</prop>
+				<prop key="xls">true</prop>
+				<prop key="xlsx">true</prop>
+				<prop key="docx">true</prop>
+				<prop key="pptx">true</prop>
+				<prop key="rtf">true</prop>
+				<prop key="odt">true</prop>
+				<prop key="ods">true</prop>
+				<prop key="swf">true</prop>
+				<prop key="applet">false</prop>
+			</props>
+		</property>						
+		<property name="downloadMappings">
+			<list>
+				<value>csv</value>
+				<value>pdf</value>
+				<value>xls</value>
+				<value>docx</value>
+				<value>pptx</value>
+				<value>rtf</value>
+				<value>swf</value>
+			</list>
+		</property>
+		<property name="attributesMap">
+			<map>				
+				<entry key="images_uri">
+				<value><![CDATA[%s/report/image?_time=%s&image=]]></value>
+				</entry>
+			</map>
+		</property>		
+		<property name="exporterParameters">
+			<map>
+				<!-- Force bei allen UTF-8 -->
+				<entry
+					key="net.sf.jasperreports.engine.JRExporterParameter.CHARACTER_ENCODING"
+					value="utf-8" />
+				<!-- <entry
+					key="net.sf.jasperreports.engine.export.JRHtmlExporterParameter.IMAGES_URI"
+					value="/sdjpa/report/image?image=" /> -->
+				<entry
+					key="net.sf.jasperreports.engine.export.JRHtmlExporterParameter.IS_USING_IMAGES_TO_ALIGN"
+					value="true" />
+				<entry
+					key="net.sf.jasperreports.engine.export.JRXlsExporterParameter.IS_ONE_PAGE_PER_SHEET"
+					value="true" />					
+			</map>
+		</property>
+	</bean>
+	
+	<bean id="appletView"
+	class=" com.techstar.modules.jasperreports.web.servlet.view.jasperreports.AppletView">
+		<property name="contentType" value="text/html;charset=UTF-8" />
+		<property name="attributesMap">
+			<map>				
+				<entry key="report_url" value="jasper/multi/applet"/>								
+				<entry key="codebase" value="static/applets"/>
+				<entry key="code" value="EmbeddedViewerApplet.class"/>
+				<entry key="archive" value="jasperreports-5.1.0.jar,commons-logging-1.1.1.jar,commons-collections-2.1.1.jar,commons-digester-2.1.jar"/>
+				<entry key="type" value="application/x-java-applet;version=1.2.2"/>
+				<entry key="scriptable" value="false"/>
+				<entry key="width" value="1000"/>
+				<entry key="height" value="600"/>
+				<entry key="title" value="Japser Reports Applet Viewer"/>
+				<entry key="pluginspage" value="http://java.sun.com/products/plugin/1.1.2/plugin-install.html"/>
+				<entry key="iecodebase" value="http://java.sun.com/products/plugin/1.1.2/jinstall-112-win32.cab#Version=1,1,2,0"/>
+			</map>
+		</property>
+		<property name="parameterMappings">
+			<props>			
+				<prop key="report_url">jr_report_url</prop>				
+				<prop key="codebase">jr_codebase</prop>
+				<prop key="code">jr_code</prop>
+				<prop key="archive">jr_archive</prop>
+				<prop key="type">jr_type</prop>
+				<prop key="scriptable">jr_scriptable</prop>
+				<prop key="width">jr_width</prop>
+				<prop key="height">jr_height</prop>
+				<prop key="title">jr_title</prop>
+			</props>
+		</property>
+	</bean>
+	
+	<bean id="flashView"
+	class=" com.techstar.modules.jasperreports.web.servlet.view.jasperreports.FlashView">
+		<property name="contentType" value="text/html;charset=UTF-8" />
+		<property name="attributesMap">
+			<map>				
+				<entry key="report_url" value="jasper/multi/swf"/>				
+				<entry key="width" value="900"/>
+				<entry key="height" value="600"/>
+				<entry key="title" value="Japser Reports Flash Viewer"/>
+				<entry key="swf" value="static/flash/jasperreports-flash-4.5.0.swf"/>				
+			</map>
+		</property>
+		<property name="parameterMappings">
+			<props>			
+				<prop key="report_url">jr_report_url</prop>
+				<prop key="width">jr_width</prop>
+				<prop key="height">jr_height</prop>
+				<prop key="title">jr_title</prop>
+				<prop key="swf">jr_swf</prop>				
+			</props>
+		</property>
+	</bean>	
+		
+
+</beans>

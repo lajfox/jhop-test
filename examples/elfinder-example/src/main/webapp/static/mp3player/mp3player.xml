@@ -1,0 +1,32 @@
+<mp3player>
+	<settings>
+		<width>120</width>
+		<height>110</height>
+		<autoLoad>true</autoLoad>
+		<autoPlay>true</autoPlay>
+		<continuousPlay>true</continuousPlay>
+		<onCompleteJumpToNext>true</onCompleteJumpToNext>
+		<repeat>true</repeat>
+		<shuffleSongs>false</shuffleSongs>
+		<showSongNumber>false</showSongNumber>
+		<initialVolume>70</initialVolume>
+		<bufferTime>5</bufferTime>
+	</settings>
+	<songs>		
+		<song>		
+			<url>http://ipad.cuplayer.com/p.php/2616575693/2754554776.mp3</url>
+			<songname>海角七号</songname>
+			<artist>天海</artist>			
+		</song>
+		<song>			
+			<url>http://ipad.cuplayer.com/p.php/2615654342/2754554776.mp3</url>
+			<songname>夜空中最亮的星</songname>
+			<artist>XSD</artist>			
+		</song>	
+		<song>			
+			<url>http://ipad.cuplayer.com/p.php/2617140225/2754554776.mp3</url>
+			<songname>也许明天</songname>
+			<artist>姚贝娜</artist>			
+		</song>			
+	</songs>
+</mp3player>

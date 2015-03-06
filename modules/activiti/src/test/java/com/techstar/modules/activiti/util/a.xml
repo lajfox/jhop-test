@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+
+  <settings>
+    <setting name="fggggggggg" value="false" />
+  </settings>
+  
+ <s>
+ <a>aaaaaaaa</a>
+ <b>sdsdsdsdsd</b>
+ </s>
+  <mappers>
+    <mapper resource="org/activiti/db/mapping/entity/Attachment3.xml" /> 
+     <mapper resource="org/activiti/db/mapping/entity/Attachment5.xml" />       
+  </mappers>
+</configuration>

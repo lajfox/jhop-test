@@ -1,0 +1,22 @@
+package com.techstar.hbjmis.entity;
+
+import java.util.Date;
+import javax.annotation.Generated;
+import javax.persistence.metamodel.SingularAttribute;
+import javax.persistence.metamodel.StaticMetamodel;
+
+@Generated(value = "org.hibernate.jpamodelgen.JPAMetaModelEntityProcessor")
+@StaticMetamodel(Account.class)
+public abstract class Account_ extends com.techstar.modules.springframework.data.jpa.domain.JsonTree_ {
+
+	public static volatile SingularAttribute<Account, Date> createtime;
+	public static volatile SingularAttribute<Account, Double> balance;
+	public static volatile SingularAttribute<Account, Integer> num;
+	public static volatile SingularAttribute<Account, String> name;
+	public static volatile SingularAttribute<Account, Person> owner;
+	public static volatile SingularAttribute<Account, Double> debit;
+	public static volatile SingularAttribute<Account, String> type;
+	public static volatile SingularAttribute<Account, Double> credit;
+
+}
+

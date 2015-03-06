@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<taglib xmlns="http://java.sun.com/xml/ns/j2ee"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-jsptaglibrary_2_0.xsd"
+  version="2.0">
+    
+  <description>JSTL 1.1 functions library</description>
+  <display-name>JSTL functions sys</display-name>
+  <tlib-version>1.1</tlib-version>
+  <short-name>fns</short-name>
+  <uri>http://java.sun.com/jsp/jstl/functionss</uri>
+  
+  <!-- DictUtils --> 
+  <function>
+    <description>根据字典类型获取字典项对象列表</description>
+    <name>getDictList</name>
+    <function-class>com.techstar.sys.utils.DictUtils</function-class>
+    <function-signature>java.util.List getDictList(java.lang.String)</function-signature>
+    <example>${fns:getDictList(type)}</example>  
+  </function>
+  
+  <function>
+    <description>
+    	1.根据字典类型获取字典项对象列表 只传type参数,itemname传空即可
+    	1.根据字典类型与相关字典项获取其级联字典项（子字典项）列表
+    </description>
+    <name>getSysDicItems</name>
+    <function-class>com.techstar.sys.utils.DictUtils</function-class>
+    <function-signature>java.util.List getSysDicItems(java.lang.String,java.lang.String)</function-signature>
+    <example>${fns:getSysDicItems(type,itemname)}</example>  
+  </function>
+  
+  <!-- Global-->
+  <function>
+    <description>获取application.properties中的配置信息</description>
+    <name>getConfig</name>
+    <function-class>com.techstar.sys.config.Global</function-class>
+    <function-signature>java.lang.String getConfig(java.lang.String)</function-signature>
+    <example>${fns:getConfig(key)}</example>  
+  </function>
+  
+</taglib>

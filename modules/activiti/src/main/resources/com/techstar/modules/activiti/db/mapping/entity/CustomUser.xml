@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace必须指向Dao接口 -->
+<mapper namespace="com.techstar.modules.activiti.engine.impl.persistence.entity.CustomUserEntity">
+
+	<!-- Activiti USER RESULTMAP -->
+	<resultMap id="userResultMap"
+		type="org.activiti.engine.impl.persistence.entity.UserEntity">
+		<id property="id" column="LOGIN_NAME" jdbcType="VARCHAR" />
+		<result property="email" column="EMAIL" jdbcType="VARCHAR" />
+		<result property="firstName" column="LOGIN_NAME" jdbcType="VARCHAR" />
+    	<result property="lastName" column="NAME" jdbcType="VARCHAR" />		
+		<result property="password" column="PASSWORD" jdbcType="VARCHAR" />
+	</resultMap>
+
+
+	<select id="findUserById" parameterType="string" resultMap="userResultMap">
+		select * from SS_USER where LOGIN_NAME = #{id,jdbcType=VARCHAR}
+	</select>
+
+	
+
+</mapper> 

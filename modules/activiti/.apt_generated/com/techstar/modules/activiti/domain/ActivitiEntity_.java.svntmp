@@ -1,0 +1,21 @@
+package com.techstar.modules.activiti.domain;
+
+import java.util.Date;
+import javax.annotation.Generated;
+import javax.persistence.metamodel.SingularAttribute;
+import javax.persistence.metamodel.StaticMetamodel;
+
+@Generated(value = "org.hibernate.jpamodelgen.JPAMetaModelEntityProcessor")
+@StaticMetamodel(ActivitiEntity.class)
+public abstract class ActivitiEntity_ extends com.techstar.modules.springframework.data.jpa.domain.IdEntity_ {
+
+	public static volatile SingularAttribute<ActivitiEntity, Date> processInstanceEndTime;
+	public static volatile SingularAttribute<ActivitiEntity, Date> processInstanceStartTime;
+	public static volatile SingularAttribute<ActivitiEntity, String> processInstanceId;
+	public static volatile SingularAttribute<ActivitiEntity, String> processDefinitionKey;
+	public static volatile SingularAttribute<ActivitiEntity, String> tasks;
+	public static volatile SingularAttribute<ActivitiEntity, String> processDefinitionName;
+	public static volatile SingularAttribute<ActivitiEntity, String> processDefinitionId;
+
+}
+

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace必须指向Dao接口 -->
+<mapper
+	namespace="com.techstar.modules.activiti.engine.impl.persistence.entity.GroupEntity">
+
+	<!-- Activiti GROUP RESULTMAP -->
+	<resultMap id="groupResultMap"
+		type="org.activiti.engine.impl.persistence.entity.GroupEntity">
+		<id property="id" column="NAME" jdbcType="VARCHAR" />
+		<result property="name" column="NAME" jdbcType="VARCHAR" />
+	</resultMap>
+
+	<select id="findGroupsByUser" parameterType="org.activiti.engine.impl.db.ListQueryParameterObject" resultMap="groupResultMap">
+		select g.*
+		from SS_ROLE g,SS_USER_ROLE membership,SS_USER u
+		where g.ID = membership.ROLE_ID
+		and membership.USER_ID = u.ID
+		and u.LOGIN_NAME = #{parameter}
+	</select>
+
+</mapper> 

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace必须指向Dao接口 -->
+<mapper
+	namespace="com.techstar.modules.activiti.repository.mybatis.ActivitiProcdefMybatisDao">
+	
+	
+		<!-- ProcessDefinitionItem RESULTMAP -->
+	<resultMap id="processDefinitionItemResultMap"	type="com.techstar.modules.activiti.domain.ProcessDefinitionItem">
+		<id property="id" column="PROCDEF_ID_" jdbcType="VARCHAR" />
+		<result property="revision" column="PROCDEF_REV_" jdbcType="INTEGER" />
+		<result property="category" column="PROCDEF_CATEGORY_" jdbcType="VARCHAR" />		
+		<result property="name" column="PROCDEF_NAME_" jdbcType="VARCHAR" />
+		<result property="key" column="PROCDEF_KEY_" jdbcType="VARCHAR" />
+		<result property="version" column="PROCDEF_VERSION_" jdbcType="INTEGER" />
+		<result property="deploymentId" column="PROCDEF_DEPLOYMENT_ID_" jdbcType="VARCHAR" />
+		<result property="resourceName" column="PROCDEF_RESOURCE_NAME_" jdbcType="VARCHAR" />
+		<result property="diagramResourceName" column="PROCDEF_DGRM_RESOURCE_NAME_" jdbcType="VARCHAR" />
+		<result property="description" column="PROCDEF_DESCRIPTION_" jdbcType="VARCHAR" />
+		<result property="hasStartFormKey" column="PROCDEF_HAS_START_FORM_KEY_" jdbcType="BOOLEAN" />
+		<result property="suspensionState" column="PROCDEF_SUSPENSION_STATE_" jdbcType="INTEGER" />		
+		<result property="deploymentTime" column="PROCDEF_DEPLOY_TIME_" jdbcType="TIMESTAMP" />		
+	</resultMap>
+	
+
+	<select id="findPageBy" resultMap="processDefinitionItemResultMap">
+		select a.ID_ as PROCDEF_ID_,
+		a.REV_  as PROCDEF_REV_,
+		a.CATEGORY_ as PROCDEF_CATEGORY_,
+		a.NAME_ as PROCDEF_NAME_,
+		a.KEY_ as PROCDEF_KEY_,
+		a.VERSION_ as PROCDEF_VERSION_,
+		a.DEPLOYMENT_ID_ as PROCDEF_DEPLOYMENT_ID_,
+		a.RESOURCE_NAME_ as PROCDEF_RESOURCE_NAME_,
+		a.DGRM_RESOURCE_NAME_ as PROCDEF_DGRM_RESOURCE_NAME_,
+		a.DESCRIPTION_ as PROCDEF_DESCRIPTION_,
+		a.HAS_START_FORM_KEY_ as PROCDEF_HAS_START_FORM_KEY_,
+		a.SUSPENSION_STATE_ as PROCDEF_SUSPENSION_STATE_,
+		b.DEPLOY_TIME_ as PROCDEF_DEPLOY_TIME_
+		from ACT_RE_PROCDEF
+		a,ACT_RE_DEPLOYMENT b
+		where b.ID_=a.DEPLOYMENT_ID_
+	</select>
+
+
+</mapper> 

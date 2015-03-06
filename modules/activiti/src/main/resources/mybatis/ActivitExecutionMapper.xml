@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace必须指向Dao接口 -->
+<mapper
+	namespace="com.techstar.modules.activiti.repository.mybatis.ActivitiExecutionMybatisDao">
+	
+	
+	<resultMap id="executionItemResultMap" type="com.techstar.modules.activiti.domain.ExecutionItem">
+    <id property="id" column="EXECUTION_ID_" jdbcType="VARCHAR" />
+    <result property="revision" column="EXECUTION_REV_" jdbcType="INTEGER" />
+    <result property="processInstanceId" column="EXECUTION_PROC_INST_ID_" jdbcType="VARCHAR" />
+    <result property="businessKey" column="EXECUTION_BUSINESS_KEY_" jdbcType="VARCHAR" />
+    <result property="processDefinitionId" column="EXECUTION_PROC_DEF_ID_" jdbcType="VARCHAR" />
+    <result property="activityId" column="EXECUTION_ACT_ID_" jdbcType="VARCHAR" />
+    <result property="isActive" column="EXECUTION_IS_ACTIVE_" jdbcType="BOOLEAN" />
+    <result property="isConcurrent" column="EXECUTION_IS_CONCURRENT_" jdbcType="BOOLEAN" />
+    <result property="isScope" column="EXECUTION_IS_SCOPE_" jdbcType="BOOLEAN" />
+    <result property="isEventScope" column="EXECUTION_IS_EVENT_SCOPE_" jdbcType="BOOLEAN" />
+    <result property="parentId" column="EXECUTION_PARENT_ID_" jdbcType="VARCHAR" />
+    <result property="superExecutionId" column="EXECUTION_SUPER_EXEC_" jdbcType="VARCHAR" />
+    <result property="suspensionState" column="EXECUTION_SUSPENSION_STATE_" jdbcType="INTEGER"/>
+    <result property="cachedEntityState" column="EXECUTION_CACHED_ENT_STATE_" jdbcType="INTEGER"/>
+    
+    <association property="processDefinition" column="EXECUTION_PROC_DEF_ID_"  javaType="com.techstar.modules.activiti.domain.ProcessDefinitionItem">
+	    <id property="id" column="PROCDEF_ID_" jdbcType="VARCHAR" />
+		<result property="revision" column="PROCDEF_REV_" jdbcType="INTEGER" />
+		<result property="category" column="PROCDEF_CATEGORY_" jdbcType="VARCHAR" />		
+		<result property="name" column="PROCDEF_NAME_" jdbcType="VARCHAR" />
+		<result property="key" column="PROCDEF_KEY_" jdbcType="VARCHAR" />
+		<result property="version" column="PROCDEF_VERSION_" jdbcType="INTEGER" />
+		<result property="deploymentId" column="PROCDEF_DEPLOYMENT_ID_" jdbcType="VARCHAR" />
+		<result property="resourceName" column="PROCDEF_RESOURCE_NAME_" jdbcType="VARCHAR" />
+		<result property="diagramResourceName" column="PROCDEF_DGRM_RESOURCE_NAME_" jdbcType="VARCHAR" />
+		<result property="description" column="PROCDEF_DESCRIPTION_" jdbcType="VARCHAR" />
+		<result property="hasStartFormKey" column="PROCDEF_HAS_START_FORM_KEY_" jdbcType="BOOLEAN" />
+		<result property="suspensionState" column="PROCDEF_SUSPENSION_STATE_" jdbcType="INTEGER" />	
+		<result property="deploymentTime" column="PROCDEF_DEPLOY_TIME_" jdbcType="TIMESTAMP" />
+    </association>
+    
+  	</resultMap>
+
+	<select id="findPageBy" resultMap="executionItemResultMap">
+		select a.ID_  as EXECUTION_ID_,
+		a.REV_ as EXECUTION_REV_,
+		a.PROC_INST_ID_ as EXECUTION_PROC_INST_ID_,
+		a.BUSINESS_KEY_ as EXECUTION_BUSINESS_KEY_,
+		a.PROC_DEF_ID_ as EXECUTION_PROC_DEF_ID_,
+		a.ACT_ID_ as EXECUTION_ACT_ID_,
+		a.IS_ACTIVE_ as EXECUTION_IS_ACTIVE_,
+		a.IS_CONCURRENT_ as EXECUTION_IS_CONCURRENT_,
+		a.IS_SCOPE_ as EXECUTION_IS_SCOPE_,
+		a.IS_EVENT_SCOPE_ as EXECUTION_IS_EVENT_SCOPE_,
+		a.PARENT_ID_ as EXECUTION_PARENT_ID_,
+		a.SUPER_EXEC_ as EXECUTION_SUPER_EXEC_,
+		a.SUSPENSION_STATE_ as EXECUTION_SUSPENSION_STATE_,
+		a.CACHED_ENT_STATE_ as EXECUTION_CACHED_ENT_STATE_,
+	
+ 		b.ID_ as PROCDEF_ID_,
+		b.REV_  as PROCDEF_REV_,
+		b.CATEGORY_ as PROCDEF_CATEGORY_,
+		b.NAME_ as PROCDEF_NAME_,
+		b.KEY_ as PROCDEF_KEY_,
+		b.VERSION_ as PROCDEF_VERSION_,
+		b.DEPLOYMENT_ID_ as PROCDEF_DEPLOYMENT_ID_,
+		b.RESOURCE_NAME_ as PROCDEF_RESOURCE_NAME_,
+		b.DGRM_RESOURCE_NAME_ as PROCDEF_DGRM_RESOURCE_NAME_,
+		b.DESCRIPTION_ as PROCDEF_DESCRIPTION_,
+		b.HAS_START_FORM_KEY_ as PROCDEF_HAS_START_FORM_KEY_,
+		b.SUSPENSION_STATE_ as PROCDEF_SUSPENSION_STATE_,
+				
+		c.DEPLOY_TIME_ as PROCDEF_DEPLOY_TIME_
+		
+		from 
+		
+		ACT_RU_EXECUTION a,
+		ACT_RE_PROCDEF	b,
+		ACT_RE_DEPLOYMENT c
+		where c.ID_=b.DEPLOYMENT_ID_
+		and a.PROC_DEF_ID_ = b.ID_
+		and a.PARENT_ID_ is null
+	</select>
+
+
+</mapper> 

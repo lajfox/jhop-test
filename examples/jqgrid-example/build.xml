@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="jhop3-jqgrid-example">
+
+	<property name="workflow.definition" value="./src/main/resources/diagrams" />
+	<property name="workflow.deployments" value="./src/main/resources/deployments" />
+
+	<target name="workflow.package.oa.leave">
+		<echo>打包流程定义及流程图::OA-请假</echo>
+		<zip destfile="${workflow.deployments}/leave.bar" basedir="${workflow.definition}/leave" update="false" includes="*.xml,*.bpmn,*.png" />
+	</target>
+
+	<target name="workflow.package.dynamic.form">
+		<echo>打包流程定义及流程图::动态表单</echo>
+		<zip destfile="${workflow.deployments}/leave-dynamic-form.bar" basedir="${workflow.definition}/leave-dynamic-form" update="false" includes="*.xml,*.bpmn,*.png" />
+	</target>
+	
+	<target name="workflow.package.formkey">
+		<echo>打包流程定义及流程图::外置表单</echo>
+		<zip destfile="${workflow.deployments}/leave-formkey.bar" basedir="${workflow.definition}/leave-formkey" update="false" includes="*.xml,*.bpmn,*.png,*.form" />
+	</target>
+	
+</project>

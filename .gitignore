@@ -1,3 +1,9 @@
+# Windows:
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+#Java class file
 *.class
 
 # Mobile Tools for Java (J2ME)

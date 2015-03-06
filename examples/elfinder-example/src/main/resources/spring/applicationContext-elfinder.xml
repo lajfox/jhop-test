@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<description>elfinder</description>
+
+
+	<bean id="fsService" class="com.techstar.modules.elfinder.impl.DefaultFsService">
+
+		<property name="volumes">
+			<list>
+				<!-- two volumes are mounted here -->
+				<bean class="com.techstar.modules.elfinder.localfs.LocalFsVolume">
+					<property name="volumeName" value="我的文档" />
+					<property name="rootDir" value="/home/sundoctor/文档" />
+					<property name="volumeId" value="A" />
+					<property name="readable" value="true" />
+					<property name="writable" value="true" />
+				</bean>
+				<bean class="com.techstar.modules.elfinder.localfs.LocalFsVolume">
+					<property name="volumeName" value="共享文档" />
+					<property name="rootDir"
+						value="/home/sundoctor/runtime-EclipseApplication" />
+					<property name="volumeId" value="B" />
+					<property name="readable" value="true" />
+					<property name="writable" value="false" />
+
+					<!-- 设置失效命令，commands : [ 'open', 'reload', 'home', 'up', 'back', 'forward', 
+						'getfile', 'quicklook', 'download', 'rm', 'duplicate', 'rename', 'mkdir', 
+						'mkfile', 'upload', 'copy', 'cut', 'paste', 'edit', 'extract', 'archive', 
+						'search', 'info', 'view', 'help', 'resize', 'sort'] -->
+					<property name="disabled">
+						<list>							
+							<value>download</value>
+							<value>copy</value>
+						</list>
+					</property>
+
+				</bean>
+			</list>
+		</property>
+
+	</bean>
+
+
+</beans>

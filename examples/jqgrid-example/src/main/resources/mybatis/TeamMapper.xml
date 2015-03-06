@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace必须指向Dao接口 -->
+<mapper namespace="com.techstar.hbjmis.repository.mybatis.TeamMybatisDao">
+	<resultMap id="teamDetailMap" type="Team">
+		<id property="id" column="team_id" />
+		<result property="name" column="team_name" />
+		<association property="master" column="master_id" javaType="Person">
+			<id property="id" column="master_id" />
+			<result property="name" column="master_name" />
+			<result property="address" column="master_address" />
+		</association>
+		<collection property="persons" javaType="Person">
+			<id property="id" column="person_id" />
+			<result property="name" column="person_name" />
+			<result property="address" column="person_address" />
+		</collection>
+	</resultMap>
+
+	<!-- 获取部门详细信息, 输出用resultMap关联嵌套对象 -->
+	<select id="getWithDetail" parameterType="String" resultMap="teamDetailMap">
+		select t.id as team_id,
+		t.name as team_name,
+		m.id as master_id,
+		m.name as master_name,
+		m.address as master_address,
+		u.id as person_id,
+		u.name as person_name,
+		u.address as person_address
+		from ss_team t, ss_person m, ss_person u
+		where t.master_id=m.id and t.id=u.team_id
+		and t.id=#{id}
+	</select>
+</mapper> 

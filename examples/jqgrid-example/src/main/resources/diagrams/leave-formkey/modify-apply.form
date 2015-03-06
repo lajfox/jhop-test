@@ -1,0 +1,38 @@
+<h2 id="error" class="alert alert-error">申请被驳回:${leaderBackReason} ${hrBackReason}</h2>
+<table class='EditTable' cellspacing='0' cellpadding='0' border='0'>
+	<tr class='FormData'>
+		<td class='CaptionTD'>请假类型：</td>
+		<td class='DataTD'>
+			<select id="leaveType" name="fp_leaveType" >
+				<option>公休</option>
+				<option>病假</option>
+				<option>调休</option>
+				<option>事假</option>
+				<option>婚假</option>
+			</select>
+		</td>
+	</tr>
+	<tr class='FormData'>
+		<td class='CaptionTD'>开始时间：</td>
+		<td class='DataTD'><input type="text" id="startTime" value="${startTime}" name="fp_startTime" class="datetime required FormElement ui-widget-content ui-corner-all" /></td>
+	</tr>
+	<tr class='FormData'>
+		<td class='CaptionTD'>结束时间：</td>
+		<td class='DataTD'><input type="text" id="endTime" value="${endTime}" name="fp_endTime" class="datetime required FormElement ui-widget-content ui-corner-all" /></td>
+	</tr>
+	<tr class='FormData'>
+		<td class='CaptionTD'>请假原因：</td>
+		<td class='DataTD'>
+			<textarea id="reason" name="fp_reason"  class="required FormElement ui-widget-content ui-corner-all">${reason}</textarea>
+		</td>
+	</tr>
+	<tr class='FormData'>
+		<td class='CaptionTD'>是否继续申请：</td>
+		<td class='DataTD'>
+			<select id="reApply" name="fp_reApply" class="FormElement ui-widget-content ui-corner-all">
+				<option value='true'>重新申请</option>
+				<option value='false'>结束流程</option>
+			</select>
+		</td>
+	</tr>
+</table>

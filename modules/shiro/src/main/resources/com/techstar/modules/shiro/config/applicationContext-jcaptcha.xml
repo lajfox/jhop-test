@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+	 http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd"
+	default-lazy-init="true">
+
+	<description>Jcaptcha登录验证码配置</description>
+
+	<bean id="imageCaptchaService"
+		class="com.octo.captcha.service.image.DefaultManageableImageCaptchaService">
+		<constructor-arg type="com.octo.captcha.service.captchastore.CaptchaStore"
+			index="0">
+			<ref bean="fastHashMapCaptchaStore" />
+		</constructor-arg>
+		<!-- (1) which captcha Engine you use -->
+		<constructor-arg type="com.octo.captcha.engine.CaptchaEngine"
+			index="1">
+			<ref bean="captchaEngine" />
+		</constructor-arg>
+		<constructor-arg index="2">
+			<value>180</value>
+		</constructor-arg>
+		<constructor-arg index="3">
+			<value>100000</value>
+		</constructor-arg>
+		<constructor-arg index="4">
+			<value>75000</value>
+		</constructor-arg>
+	</bean>
+
+	<bean id="fastHashMapCaptchaStore"
+		class="com.octo.captcha.service.captchastore.FastHashMapCaptchaStore" />
+	<bean id="captchaEngine" class="com.techstar.modules.jcaptcha.engine.GMailEngine" />
+
+</beans>

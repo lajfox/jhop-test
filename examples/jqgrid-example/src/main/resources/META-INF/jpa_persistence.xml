@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd" version="2.0">
+	<!-- Keep this file empty, Spring will scan the @Entity classes -->
+	<persistence-unit name="defaultPU" transaction-type="RESOURCE_LOCAL">	
+	
+		<properties>	
+		<!-- oracle 同一实例下多用户创建相同表，需要配置 schema-->
+		<!-- <property name="hibernate.default_schema" value="jhop3"/>	 -->
+			
+		<!-- <property name="org.hibernate.envers.track_entities_changed_in_revision" value="true"/>	-->			
+ 		<!-- <property name="org.hibernate.envers.audit_strategy" value="org.hibernate.envers.strategy.ValidityAuditStrategy"/> -->
+		<!-- <property name="org.hibernate.envers.revision_listener" value="com.techstar.modules.hibernate.envers.CustomEntityTrackingRevisionListener"/>-->
+		</properties>		
+	</persistence-unit>
+</persistence>

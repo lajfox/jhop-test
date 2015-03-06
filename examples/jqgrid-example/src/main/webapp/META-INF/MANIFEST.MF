@@ -1,0 +1,53 @@
+Manifest-Version: 1.0
+Class-Path: jhop3-core.jar jcaptcha-all-1.0-RC6.jar dozer-5.4.0.jar sh
+ iro-core-1.2.2.jar slf4j-api-1.6.6.jar commons-beanutils-1.8.3.jar sp
+ ring-core-4.0.0.RELEASE.jar spring-beans-4.0.0.RELEASE.jar spring-con
+ text-4.0.0.RELEASE.jar spring-aop-4.0.0.RELEASE.jar aopalliance-1.0.j
+ ar spring-expression-4.0.0.RELEASE.jar spring-tx-4.0.0.RELEASE.jar sp
+ ring-context-support-4.0.0.RELEASE.jar aspectjrt-1.7.0.jar aspectjwea
+ ver-1.7.0.jar cglib-2.2.2.jar asm-3.3.1.jar hibernate-core-4.2.4.Fina
+ l.jar antlr-2.7.7.jar dom4j-1.6.1.jar hibernate-jpa-2.0-api-1.0.1.Fin
+ al.jar hibernate-commons-annotations-4.0.2.Final.jar javassist-3.15.0
+ -GA.jar hibernate-entitymanager-4.2.4.Final.jar jboss-logging-3.1.0.G
+ A.jar jboss-transaction-api_1.1_spec-1.0.1.Final.jar hibernate-ehcach
+ e-4.2.4.Final.jar ehcache-core-2.6.0.jar hibernate-jpamodelgen-1.3.0.
+ Final.jar spring-data-jpa-1.3.4.RELEASE.jar spring-data-commons-1.5.2
+ .RELEASE.jar jcl-over-slf4j-1.6.6.jar mybatis-3.2.2.jar mybatis-sprin
+ g-1.2.0.jar spring-orm-4.0.0.RELEASE.jar spring-jdbc-4.0.0.RELEASE.ja
+ r spring-aspects-4.0.0.RELEASE.jar hibernate-c3p0-4.2.4.Final.jar c3p
+ 0-0.9.2.1.jar mchange-commons-java-0.2.3.4.jar spring-web-4.0.0.RELEA
+ SE.jar spring-webmvc-4.0.0.RELEASE.jar hibernate-validator-4.3.1.Fina
+ l.jar validation-api-1.0.0.GA.jar jackson-databind-2.3.0.jar jackson-
+ annotations-2.3.0.jar jackson-core-2.3.0.jar jackson-module-jaxb-anno
+ tations-2.3.0.jar jaxen-1.1.4.jar slf4j-log4j12-1.6.6.jar log4j-1.2.1
+ 7.jar commons-lang3-3.1.jar commons-io-2.4.jar commons-codec-1.6.jar 
+ commons-collections-3.2.jar guava-13.0.1.jar joda-time-2.1.jar freema
+ rker-2.3.19.jar mail-1.4.5.jar activation-1.1.1.jar jstl-1.2.jar rome
+ -1.0RC2.jar jdom-1.0.jar spring-test-4.0.0.RELEASE.jar jhop3-shiro.ja
+ r shiro-spring-1.2.2.jar shiro-web-1.2.2.jar shiro-ehcache-1.2.2.jar 
+ jhop3-activiti.jar activiti-engine-5.14.jar activiti-bpmn-converter-5
+ .14.jar activiti-bpmn-model-5.14.jar jackson-core-asl-1.9.9.jar commo
+ ns-email-1.2.jar activiti-spring-5.14.jar activiti-explorer-5.14.jar 
+ activiti-json-converter-5.14.jar jackson-mapper-asl-1.9.9.jar javaGeo
+ m-0.11.0.jar h2-1.3.170.jar imgscalr-lib-3.1.jar groovy-all-2.1.3.jar
+  activiti-modeler-5.14.jar activiti-common-rest-5.14.jar org.restlet-
+ 2.0.15.jar org.osgi.core-4.0.0.jar org.restlet.ext.servlet-2.0.15.jar
+  org.restlet.ext.jackson-2.0.15.jar org.restlet.ext.fileupload-2.0.15
+ .jar commons-fileupload-1.2.2.jar batik-parser-1.7.jar batik-awt-util
+ -1.7.jar batik-util-1.7.jar batik-xml-1.7.jar batik-transcoder-1.7.ja
+ r fop-0.94.jar xmlgraphics-commons-1.2.jar commons-logging-1.1.1.jar 
+ avalon-framework-api-4.3.1.jar avalon-framework-impl-4.3.1.jar batik-
+ bridge-1.7.jar batik-anim-1.7.jar batik-dom-1.7.jar batik-css-1.7.jar
+  batik-ext-1.7.jar xml-apis-ext-1.3.04.jar batik-svg-dom-1.7.jar bati
+ k-gvt-1.7.jar batik-script-1.7.jar batik-svggen-1.7.jar xml-apis-1.3.
+ 02.jar batik-codec-1.7.jar activiti-bpmn-layout-5.14.jar jgraphx-1.10
+ .4.2.jar activiti-rest-5.14.jar activiti-diagram-rest-5.14.jar common
+ s-lang-2.6.jar jhop3-jasperreports.jar jfreechart-1.0.12.jar jcommon-
+ 1.0.15.jar itext-4.2.1.jar bctsp-jdk14-1.38.jar bcprov-jdk14-1.38.jar
+  bcmail-jdk14-1.38.jar pdf-renderer-1.0.5.jar jasperreports-5.1.0.jar
+  castor-1.2.jar poi-3.9.jar poi-ooxml-3.9.jar poi-ooxml-schemas-3.9.j
+ ar xmlbeans-2.3.0.jar stax-api-1.0.1.jar poi-scratchpad-3.9.jar commo
+ ns-digester-2.1.jar jhop3-mail.jar hibernate-envers-4.2.4.Final.jar m
+ ysql-connector-java-5.1.21.jar postgresql-9.1-901-1.jdbc4.jar ojdbc-1
+ 4.jar
+

@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-fragment version="3.0" xmlns="http://java.sun.com/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-fragment_3_0.xsd">
+
+	<!-- 指定模块名称 -->
+	<name>jhop3-core</name>
+	<!-- 加载顺序 -->
+	<ordering>
+		<!-- 在其它模块之前加载 -->
+		<before>
+			<others />
+		</before>
+	</ordering>
+
+
+	<!-- Character Encoding filter -->
+	<filter>
+		<filter-name>encodingFilter</filter-name>
+		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+		<init-param>
+			<param-name>encoding</param-name>
+			<param-value>UTF-8</param-value>
+		</init-param>
+		<init-param>
+			<param-name>forceEncoding</param-name>
+			<param-value>true</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>encodingFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+		<dispatcher>REQUEST</dispatcher>
+		<dispatcher>FORWARD</dispatcher>
+	</filter-mapping>
+
+	<!-- gzip压缩过滤器，缩小网页、文件体积，提高响应速度 -->
+	<filter>
+		<filter-name>GZipFilter</filter-name>
+		<filter-class>com.techstar.modules.web.filter.GZipFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>GZipFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+	<!-- Cache Control Header filter -->
+	<filter>
+		<filter-name>cacheControlHeaderFilter</filter-name>
+		<filter-class>com.techstar.modules.web.filter.CacheControlHeaderFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>cacheControlHeaderFilter</filter-name>
+		<url-pattern>/static/*</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>cacheControlHeaderFilter</filter-name>
+		<url-pattern>/api/*</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>cacheControlHeaderFilter</filter-name>
+		<url-pattern>/editor/*</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>cacheControlHeaderFilter</filter-name>
+		<url-pattern>/explorer/*</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>cacheControlHeaderFilter</filter-name>
+		<url-pattern>/libs/*</url-pattern>
+	</filter-mapping>
+
+
+
+	<welcome-file-list>
+		<welcome-file>index.html</welcome-file>
+		<welcome-file>index.htm</welcome-file>
+		<welcome-file>index.jsp</welcome-file>
+		<welcome-file>default.html</welcome-file>
+		<welcome-file>default.htm</welcome-file>
+		<welcome-file>default.jsp</welcome-file>
+	</welcome-file-list>
+
+</web-fragment>  

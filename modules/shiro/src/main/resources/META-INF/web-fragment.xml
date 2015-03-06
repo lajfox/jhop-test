@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-fragment version="3.0" xmlns="http://java.sun.com/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-fragment_3_0.xsd">
+
+	<!-- 指定模块名称 -->
+	<name>jhop3-shiro</name>
+	<!-- 加载顺序 -->
+	<ordering>
+		<!-- 在其它模块之前加载 -->
+		<before>
+			<others />
+		</before>
+	</ordering>
+
+	<!-- jcaptcha 用来生成验证码图片 -->
+	<servlet>
+		<servlet-name>jcaptcha</servlet-name>
+		<servlet-class>com.techstar.modules.jcaptcha.servlet.ImageCaptchaServlet</servlet-class>
+		<load-on-startup>3</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>jcaptcha</servlet-name>
+		<url-pattern>/static/captcha.jpg</url-pattern>
+	</servlet-mapping>
+
+	<!-- Shiro Security filter -->
+	<filter>
+		<filter-name>shiroFilter</filter-name>
+		<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>shiroFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+		<dispatcher>REQUEST</dispatcher>
+		<dispatcher>FORWARD</dispatcher>
+	</filter-mapping>
+
+</web-fragment>  

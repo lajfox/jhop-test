@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace必须指向Dao接口 -->
+<mapper namespace="com.techstar.hbjmis.repository.mybatis.AccountMybatisDao">
+	
+	<select id="get" parameterType="map" resultType="hashmap">
+		select a.*,
+		b.id as personid,
+		b.name as personname,
+		b.address,
+		b.phone
+		from SS_ACCOUNT a, SS_PERSON b		
+		<where>
+			a.PERSON_ID = b.id
+			<if test="name != null">
+				and a.name=#{name}
+			</if>		
+			<if test="personname != null">
+				and b.name=#{personname}
+			</if>
+		</where>		
+	</select>
+	
+	<select id="summary" parameterType="map" resultType="hashmap">
+		select 
+		count(a.name) as name,
+		sum(a.debit) as debit,
+		sum(a.credit) as credit,
+		sum(a.balance) as balance,
+		count(distinct b.name) as personname,
+		count(distinct b.address) as address,
+		count(distinct b.phone) as phone
+		from SS_ACCOUNT a, SS_PERSON b		
+		<where>
+			a.PERSON_ID = b.id
+			<if test="name != null">
+				and a.name=#{name}
+			</if>		
+			<if test="personname != null">
+				and b.name=#{personname}
+			</if>
+		</where>		
+	</select>	
+	
+	<select id="get1" parameterType="Account" resultType="hashmap">
+		select a.*,
+		b.id as personid,
+		b.name as personname,
+		b.address,
+		b.phone
+		from SS_ACCOUNT a, SS_PERSON b		
+		<where>
+			a.PERSON_ID = b.id
+			<if test="name != null">
+				and a.name=#{name}
+			</if>
+		</where>		
+	</select>	
+	
+	<select id="get2" parameterType="String" resultType="hashmap">
+		select a.*,
+		b.id as personid,
+		b.name as personname,
+		b.address,
+		b.phone
+		from SS_ACCOUNT a, SS_PERSON b
+		where a.PERSON_ID = b.id			
+		and a.debit>=#{debit}				
+	</select>
+	
+	<select id="get3"  resultType="hashmap">
+		select a.*,
+		b.id as personid,
+		b.name as personname,
+		b.address,
+		b.phone
+		from SS_ACCOUNT a, SS_PERSON b
+		where a.PERSON_ID = b.id						
+	</select>
+	
+	<select id="get4"  resultType="hashmap">
+		select a.*,
+		b.id as personid,
+		b.name as personname,
+		b.address,
+		b.phone
+		from SS_ACCOUNT a, SS_PERSON b		
+		<where>
+			a.PERSON_ID = b.id
+			<if test="name != null">
+				and a.name=#{name}
+			</if>		
+			<if test="personname != null">
+				and b.name=#{personname}
+			</if>
+		</where>		
+	</select>			
+	
+</mapper> 

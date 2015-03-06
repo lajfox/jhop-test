@@ -1,0 +1,30 @@
+<table  class='view-info EditTable' cellspacing='0' cellpadding='0' border='0'>
+	<tr class='FormData'>
+		<td width="100" class='CaptionTD'>申请人：</td>
+		<td class='DataTD' name="userId">${applyUserId}</td>
+	</tr>
+	<tr class='FormData'>
+		<td class='CaptionTD'>假种：</td>
+		<td class='DataTD' name="leaveType">${leaveType}</td>
+	</tr>
+	<tr class='FormData'>
+		<td class='CaptionTD'>请假<font color="red">开始</font>时间：</td>
+		<td class='DataTD' name="startTime">${startTime}</td>
+	</tr>
+	<tr class='FormData'>
+		<td class='CaptionTD'>请假<font color="red">结束</font>时间：</td>
+		<td class='DataTD' name="endTime">${endTime}</td>
+	</tr>
+	<tr class='FormData'>
+		<td class='CaptionTD'>请假事由：</td>
+		<td class='DataTD' name="reason">${reason}</td>
+	</tr>
+	<tr class='FormData'>
+		<td class='CaptionTD'>开始时间：</td>
+		<td class='DataTD'><input type="text" id="startTime" name="fp_startTime" class="required dateISO datetime FormElement ui-widget-content ui-corner-all" /></td>
+	</tr>
+	<tr class='FormData'>
+		<td class='CaptionTD'>结束时间：</td>
+		<td class='DataTD'><input type="text" id="endTime" name="fp_endTime" class="required dateISO datetime FormElement ui-widget-content ui-corner-all" /></td>
+	</tr>
+</table>

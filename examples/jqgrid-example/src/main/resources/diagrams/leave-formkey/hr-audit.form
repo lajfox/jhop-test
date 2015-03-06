@@ -1,0 +1,37 @@
+<table class='view-info EditTable' cellspacing='0' cellpadding='0' border='0'>
+	<tr class='FormData'>
+		<td width="100" class='CaptionTD'>申请人：</td>
+		<td class='DataTD' name="userId">${applyUserId}</td>
+	</tr>
+	<tr class='FormData'>
+		<td class='CaptionTD'>假种：</td>
+		<td class='DataTD' name="leaveType">${leaveType}</td>
+	</tr>
+	<tr class='FormData'>
+		<td class='CaptionTD'>请假<font color="red">开始</font>时间：</td>
+		<td class='DataTD' name="startTime">${startTime}</td>
+	</tr>
+	<tr class='FormData'>
+		<td class='CaptionTD'>请假<font color="red">结束</font>时间：</td>
+		<td class='DataTD' name="endTime">${endTime}</td>
+	</tr>
+	<tr class='FormData'>
+		<td class='CaptionTD'>请假事由：</td>
+		<td class='DataTD' name="reason">${reason}</td>
+	</tr>
+	<tr class='FormData'>
+		<td class='CaptionTD'>是否同意申请：</td>
+		<td class='DataTD'>
+			<select id="hrPass" name="fp_hrPass">
+				<option value="true">同意</option>
+				<option value="false">驳回</option>
+			</select>
+		</td>
+	</tr>
+	<tr class='FormData' id="hrBackReasonTr">
+		<td class='CaptionTD'>驳回理由：</td>
+		<td class='DataTD'>
+			<textarea id="hrBackReason" name="fp_hrBackReason" class="FormElement ui-widget-content ui-corner-all"></textarea>
+		</td>
+	</tr>
+</table>

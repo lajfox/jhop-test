@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:jdbc="http://www.springframework.org/schema/jdbc" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
+		http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa.xsd"
+	default-lazy-init="true">
+
+	<description>多数源JTA配置例子,本例子同时使用oracle、mysql数据同时提交、回滚事务</description>
+
+	<!-- 使用annotation 自动注册bean,并检查@Required,@Autowired的属性已被注入 -->
+	<context:component-scan base-package="com.techstar">
+		<context:exclude-filter type="annotation"
+			expression="org.springframework.stereotype.Controller" />
+	</context:component-scan>
+
+	<context:property-placeholder
+		ignore-resource-not-found="true" location="classpath*:/application.properties" />
+
+	<bean id="atomikosUserTransaction" class="com.atomikos.icatch.jta.UserTransactionImp">
+		<property name="transactionTimeout" value="300" />
+	</bean>
+
+	<bean id="atomikosTransactionManager" class="com.atomikos.icatch.jta.UserTransactionManager"
+		init-method="init" destroy-method="close">
+		<property name="forceShutdown" value="true" />
+	</bean>
+
+	<bean id="transactionManager"
+		class="org.springframework.transaction.jta.JtaTransactionManager">
+		<property name="transactionManager" ref="atomikosTransactionManager" />
+		<property name="userTransaction" ref="atomikosUserTransaction" />
+		<property name="allowCustomIsolationLevels" value="true" />
+	</bean>
+
+	<!-- 使用annotation定义事务 -->
+	<tx:annotation-driven transaction-manager="transactionManager"
+		proxy-target-class="true" />
+
+	<!-- 定义aspectj -->
+	<aop:aspectj-autoproxy proxy-target-class="true" />
+
+
+	<!-- oracle 数据源配置 -->
+	<bean id="oracleDataSource" class="com.atomikos.jdbc.AtomikosDataSourceBean"
+		init-method="init" destroy-method="close">
+		<property name="uniqueResourceName" value="oracleXADBMS" />
+		<property name="xaDataSourceClassName" value="oracle.jdbc.xa.client.OracleXADataSource" />
+		<property name="xaProperties">
+			<props>
+				<prop key="user">${oracle.jdbc.username}</prop>
+				<prop key="password">${oracle.jdbc.password}</prop>
+				<prop key="URL">${oracle.jdbc.url}</prop>
+			</props>
+		</property>
+		<property name="poolSize" value="2" />
+		<property name="minPoolSize" value="1" />
+		<property name="maxPoolSize" value="5" />
+		<property name="testQuery" value="select 1 from dual" />
+	</bean>
+	<!-- AbstractTransactionalJUnit4SpringContextTests测试类需要一个名为 dataSource的数据源-->
+	<alias name="oracleDataSource" alias="dataSource"/>
+
+	<!-- Jpa Entity Manager 配置 -->
+	<bean id="orcaleEntityManagerFactory"
+		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+		<property name="persistenceXmlLocation" value="classpath*:META-INF/jpa_persistence.xml" />
+		<property name="persistenceUnitName" value="orcalePU" />
+		<property name="dataSource" ref="oracleDataSource" />
+		<property name="jpaVendorAdapter" ref="oralceHibernateJpaVendorAdapter" />
+		<property name="jpaProperties">
+			<props>
+				<prop key="hibernate.format_sql">true</prop>
+				<prop key="hibernate.connection.driver_class">oracle.jdbc.xa.client.OracleXADataSource</prop>
+				<prop key="hibernate.current_session_context_class">jta</prop>
+				<prop key="hibernate.transaction.manager_lookup_class">com.atomikos.icatch.jta.hibernate3.TransactionManagerLookup
+				</prop>
+			</props>
+		</property>
+	</bean>
+
+	<bean id="oralceHibernateJpaVendorAdapter"
+		class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
+		<property name="databasePlatform">
+			<value>${oracle.databasePlatform}</value>
+		</property>
+		<property name="showSql">
+			<value>true</value>
+		</property>
+		<property name="generateDdl">
+			<value>true</value>
+		</property>
+	</bean>
+
+
+	<!-- Spring Data Jpa配置, 扫描base-package下所有继承于Repository<T,ID>的接口 -->
+	<jpa:repositories base-package="com.techstar.topic.**.repository.jpa"
+		factory-class="com.techstar.modules.springframework.data.jpa.repository.support.MyJpaRepositoryFactoryBean"
+		transaction-manager-ref="transactionManager"
+		entity-manager-factory-ref="orcaleEntityManagerFactory" />
+
+
+	<!-- mysql 数据源配置 -->
+	<bean id="mysqlDataSource" class="com.atomikos.jdbc.AtomikosDataSourceBean"
+		init-method="init" destroy-method="close">
+		<property name="uniqueResourceName" value="mysqlXADBMS" />
+		<property name="xaDataSourceClassName" value="com.mysql.jdbc.jdbc2.optional.MysqlXADataSource" />
+		<property name="xaProperties">
+			<props>
+				<prop key="user">${mysql.jdbc.username}</prop>
+				<prop key="password">${mysql.jdbc.password}</prop>
+				<prop key="URL">${mysql.jdbc.url}</prop>
+			</props>
+		</property>
+		<property name="poolSize" value="2" />
+		<property name="minPoolSize" value="1" />
+		<property name="maxPoolSize" value="5" />
+		<property name="testQuery" value="select 1" />
+	</bean>
+
+	<!-- Jpa Entity Manager 配置 -->
+	<bean id="mysqlEntityManagerFactory"
+		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+		<property name="persistenceXmlLocation" value="classpath*:META-INF/jpa_persistence.xml" />
+		<property name="persistenceUnitName" value="mysqlPU" />
+		<property name="dataSource" ref="mysqlDataSource" />
+		<property name="jpaVendorAdapter" ref="mysqlHibernateJpaVendorAdapter" />
+		<property name="jpaProperties">
+			<props>
+				<prop key="hibernate.format_sql">true</prop>
+				<prop key="hibernate.connection.driver_class">com.mysql.jdbc.jdbc2.optional.MysqlXADataSource</prop>
+				<prop key="hibernate.current_session_context_class">jta</prop>
+				<prop key="hibernate.transaction.manager_lookup_class">com.atomikos.icatch.jta.hibernate3.TransactionManagerLookup
+				</prop>
+			</props>
+		</property>
+	</bean>
+
+	<bean id="mysqlHibernateJpaVendorAdapter"
+		class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
+		<property name="databasePlatform">
+			<value>${mysql.databasePlatform}</value>
+		</property>
+		<property name="showSql">
+			<value>true</value>
+		</property>
+		<property name="generateDdl">
+			<value>true</value>
+		</property>
+	</bean>
+
+
+	<!-- Spring Data Jpa配置, 扫描base-package下所有继承于Repository<T,ID>的接口 -->
+	<jpa:repositories base-package="com.techstar.post.**.repository.jpa"
+		factory-class="com.techstar.modules.springframework.data.jpa.repository.support.MyJpaRepositoryFactoryBean"
+		transaction-manager-ref="transactionManager"
+		entity-manager-factory-ref="mysqlEntityManagerFactory" />
+
+
+</beans>

@@ -1,0 +1,28 @@
+<table class='EditTable' cellspacing='0' cellpadding='0' border='0'>
+	<tr class='FormData'>
+		<td class='CaptionTD'>请假类型：</td>
+		<td class='DataTD'>
+			<select id="leaveType" name="fp_leaveType" class="FormElement ui-widget-content ui-corner-all">
+				<option>公休</option>
+				<option>病假</option>
+				<option>调休</option>
+				<option>事假</option>
+				<option>婚假</option>
+			</select>
+		</td>
+	</tr>
+	<tr class='FormData'>
+		<td class='CaptionTD'>开始时间：</td>
+		<td class='DataTD'> <input type="text" id="startTime" name="fp_startTime" class="datetime required FormElement ui-widget-content ui-corner-all" /></td>
+	</tr>
+	<tr class='FormData'>
+		<td class='CaptionTD'>结束时间：</td>
+		<td class='DataTD'><input type="text" id="endTime" name="fp_endTime" class="datetime required FormElement ui-widget-content ui-corner-all" /></td>
+	</tr>
+	<tr class='FormData'>
+		<td class='CaptionTD'>请假原因：</td>
+		<td class='DataTD'>
+			<textarea id="reason" name="fp_reason" class="required FormElement ui-widget-content ui-corner-all"></textarea>
+		</td>
+	</tr>
+</table>
